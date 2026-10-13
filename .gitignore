@@ -1,0 +1,17 @@
+# Zsh compiled files and completion caches
+*.zwc
+.zcompdump*
+.zcompcache/
+
+# Auto-installed by the plugin manager
+plugins/
+
+# Machine-local overrides
+local.zsh
+
+
+# macOS metadata
+.DS_Store
+
+# Tutorial outline
+TUTORIAL.md

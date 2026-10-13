@@ -1,0 +1,31 @@
+# ~/.zshenv — bootstrap.
+#
+# zsh reads ~/.zshenv *before* ZDOTDIR is known, so the two lines that set
+# ZDOTDIR have to live in the home directory. Everything else lives in the
+# config directory that ZDOTDIR points at.
+#
+# Install:  cp bootstrap/zshenv ~/.zshenv
+#
+# Keep this file free of secrets: it is read by every shell, including
+# non-interactive ones. Personal environment variables belong in
+# $ZDOTDIR/.zshenv.
+
+if [[ -z "$XDG_CONFIG_HOME" ]]; then
+  export XDG_CONFIG_HOME="$HOME/.config"
+fi
+
+if [[ -z "$ZDOTDIR" && -d "$XDG_CONFIG_HOME/zsh" ]]; then
+  export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+fi
+
+[[ -r "$ZDOTDIR/.zshenv" ]] && source "$ZDOTDIR/.zshenv"
+
+# ---------- ZVM (zsh version manager) ----------
+export ZVM_INSTALL="$HOME/.zvm/self"
+if [[ -d "$ZVM_INSTALL" ]]; then
+  export PATH="$PATH:$HOME/.zvm/bin"
+  export PATH="$PATH:$ZVM_INSTALL"
+fi
+export ZVM_DIR="$HOME/.zvm"
+export PATH="$ZVM_DIR/bin:$PATH"
+export PATH="$HOME/.zvm/self:$PATH"

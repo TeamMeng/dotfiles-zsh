@@ -1,0 +1,12 @@
+# Loaded via STARSHIP_CONFIG in .zshenv — everything not set here falls back to
+# the starship defaults.
+
+[conda]
+format = "[$environment]($style) "
+style = "bold blue"
+ignore_base = true
+
+[character]
+success_symbol = "[->](bold green)"
+error_symbol = "[->](bold red)"
+vimcmd_symbol = "[<-](bold green)"
